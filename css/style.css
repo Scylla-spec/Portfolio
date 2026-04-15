@@ -748,4 +748,20 @@ section h2 {
     .project-card {
         padding: 28px;
     }
+
+    /* ========================
+   FOOTER
+======================== */
+    footer {
+        text-align: center;
+        padding: 24px;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.2);
+        letter-spacing: 1px;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        width: 100%;
+        display: block;
+        clear: both;
+    }
 }
