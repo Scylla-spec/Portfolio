@@ -35,6 +35,31 @@ html {
     overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 135, 0.4);
+    border-radius: 6px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 135, 0.7);
+    background-clip: content-box;
+}
+
+* {
+    scrollbar-color: rgba(0, 255, 135, 0.4) transparent;
+    scrollbar-width: thin;
+}
+
 body {
     background-color: var(--bg);
     background: radial-gradient(ellipse at 70% 0%, #2d0a4e 0%, #110a24 40%, #070714 70%);
@@ -68,10 +93,9 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.35;
+    height: 100vh;
+    z-index: -1;
+    display: block;
 }
 
 /* ========================
@@ -247,15 +271,8 @@ img {
 }
 
 @keyframes blink {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .hero-name {
@@ -273,10 +290,24 @@ img {
 }
 
 .hero-sub {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.hero-bio {
+    font-size: 0.95rem;
     color: var(--text-muted);
-    margin-bottom: 48px;
+    max-width: 480px;
     line-height: 1.8;
+    margin-top: 0;
+    margin-bottom: 48px;
+    display: block;
 }
 
 .hero-btns {
@@ -382,13 +413,8 @@ img {
 }
 
 @keyframes ring-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* FLOATING CARDS */
@@ -428,27 +454,13 @@ img {
 }
 
 @keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
 @keyframes float-bottom {
-
-    0%,
-    100% {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    50% {
-        transform: translateX(-50%) translateY(-8px);
-    }
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
 }
 
 .float-card-label {
@@ -485,12 +497,11 @@ section:not(#hero) {
     text-align: center;
 }
 
-/* SECTION LABEL — vertical bar style */
 .section-label {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 16px;
+    margin-bottom: 32px;
 }
 
 .section-label::before {
@@ -515,7 +526,7 @@ section h2 {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     letter-spacing: -1px;
-    margin-bottom: 64px;
+    margin-bottom: 8px;
 }
 
 /* ========================
@@ -658,6 +669,9 @@ section h2 {
     color: var(--text-muted);
     margin-bottom: 40px;
     font-size: 1.1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .socials {
@@ -686,6 +700,30 @@ section h2 {
     transform: translateY(-3px);
 }
 
+.whatsapp-icon {
+    color: #25D366;
+    border-color: rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-icon:hover {
+    border-color: #25D366;
+    color: #25D366;
+}
+
+/* ========================
+   FOOTER
+======================== */
+footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    width: 100%;
+}
+
 /* ========================
    RESPONSIVE
 ======================== */
@@ -704,6 +742,11 @@ section h2 {
 
     .hero-left {
         max-width: 100%;
+    }
+
+    .hero-bio {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .float-card--top-left {
@@ -747,21 +790,5 @@ section h2 {
 
     .project-card {
         padding: 28px;
-    }
-
-    /* ========================
-   FOOTER
-======================== */
-    footer {
-        text-align: center;
-        padding: 24px;
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        color: rgba(255, 255, 255, 0.2);
-        letter-spacing: 1px;
-        border-top: 1px solid rgba(255, 255, 255, 0.04);
-        width: 100%;
-        display: block;
-        clear: both;
     }
 }
